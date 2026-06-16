@@ -25,7 +25,7 @@ Yay!
 <div class="hospital-label">Hospital A</div>
 </div>
 <div class="cdm-unit unit-b">
-<Hospital :size="180" body="#dfe7ee" cross="#00B04F" base="#FEAE00" window-color="#8FB6A6" />
+<Hospital :size="180" body="#dfe7ee" cross="#2f80d6" base="#2f80d6" window-color="#9fc2e6" />
 <div class="hospital-label">Hospital B</div>
 </div>
 <div class="cdm-table table-a">

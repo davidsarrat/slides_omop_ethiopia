@@ -145,6 +145,10 @@ td {
    ———————————————————————————————— */
 
 /* ————————————————————————————————
+   Standardized vocabularies (many terms -> one concept)
+   ———————————————————————————————— */
+
+/* ————————————————————————————————
    OMOP CDM schema (zoom into a region)
    ———————————————————————————————— */
 
@@ -233,6 +237,67 @@ td {
 }
 .perk-text { font-family: 'Roboto Mono', monospace; font-size: 1.02em; color: #f0e8e0; font-weight: 500; }
 .perk-sub { font-family: 'Roboto Mono', monospace; font-size: 0.8em; color: #5fd99a; margin-top: 3px; }
+
+/* ————————————————————————————————
+   Vocabulary problem scene (one concept, many representations)
+   ———————————————————————————————— */
+
+.voc-scene { position: relative; width: 100%; height: 100%; }
+.voc-unit {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+.voc-a { left: 13%; top: 64%; transform: translate(-50%, -50%); }
+.voc-h1 { left: 86%; top: 22%; transform: translate(-50%, -50%); }
+.voc-h2 { left: 86%; top: 50%; transform: translate(-50%, -50%); }
+.voc-h3 { left: 86%; top: 78%; transform: translate(-50%, -50%); }
+.voc-label { font-family: 'Roboto Mono', monospace; font-size: 0.78em; color: #f0e8e0; }
+
+.speech-bubble.tail-side-right::after {
+  left: auto;
+  right: -11px;
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+  border: 11px solid transparent;
+  border-left: 12px solid #ffffff;
+  border-right: 0;
+}
+
+.speech-bubble.voc-q,
+.speech-bubble.voc-r {
+  transform-origin: center center;
+  transform: translateY(-50%) scale(0.55);
+}
+.speech-bubble.voc-q { max-width: 250px; }
+.speech-bubble.voc-r { max-width: 220px; }
+.speech-bubble.voc-q.is-on,
+.speech-bubble.voc-r.is-on {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+.voc-q { left: 14%; top: 32%; }
+.voc-r.r1 { right: 24%; top: 22%; }
+.voc-r.r2 { right: 24%; top: 50%; }
+.voc-r.r3 { right: 24%; top: 78%; }
+.voc-note { font-size: 0.78em; color: #8a9a9a; font-weight: 400; }
+
+.voc-caption {
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  transform: translateX(-50%) translateY(8px);
+  opacity: 0;
+  text-align: center;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.05em;
+  color: #FEAE00;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.voc-caption.is-on { opacity: 1; transform: translateX(-50%) translateY(0); }
 
 .join-msg {
   font-family: 'Roboto Mono', monospace;

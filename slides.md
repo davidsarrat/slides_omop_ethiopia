@@ -86,6 +86,10 @@ src: ./slides/omop-schema.md
 ---
 
 ---
+src: ./slides/vocab-problem.md
+---
+
+---
 src: ./slides/omop-schema-clinical.md
 ---
 
