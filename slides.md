@@ -119,6 +119,11 @@ src: ./slides/power-dsomop.md
 ---
 
 ---
+src: ./slides/match.md
+class: match-slide
+---
+
+---
 src: ./slides/closing.md
 class: closing-slide
 ---

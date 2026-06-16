@@ -1,5 +1,5 @@
 ---
-clicks: 3
+clicks: 4
 ---
 <script setup>
 const sites = [
@@ -11,7 +11,7 @@ const SCALE = 0.82
 const MINI = 1.05
 const subs = [
   'One analyst, three OMOP CDM sites.',
-  '<strong>1 script 4 all</strong> : the same query reaches every site.',
+  'The same script is sent to every site.',
   'Each site computes the histogram locally : patient data never moves.',
   'Only aggregates return : DataSHIELD pools them into one result.',
 ]
@@ -26,7 +26,7 @@ const total = sites.reduce((a, s) => a + s.counts.reduce((x, y) => x + y, 0), 0)
 <path class="fed-line fed-down" :class="{ show: $clicks >= 3 }" d="M17,29 C25,40 42,52 50,67" /><path class="fed-line fed-down" :class="{ show: $clicks >= 3 }" d="M50,29 L50,67" /><path class="fed-line fed-down" :class="{ show: $clicks >= 3 }" d="M83,29 C75,40 58,52 50,67" />
 </svg>
 <template v-for="s in sites" :key="s.name"><div class="fed-node" :class="{ compute: $clicks >= 2 }" :style="{ left: s.x + '%', top: '1%' }"><div class="fed-node-icon"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><ellipse cx="7" cy="3" rx="6" ry="2.4" :stroke="s.color" stroke-width="1.3" /><path d="M1 3 V13 C1 14.4 13 14.4 13 13 V3" :stroke="s.color" stroke-width="1.3" /><path d="M1 8 C1 9.4 13 9.4 13 8" :stroke="s.color" stroke-width="1.1" opacity="0.55" /></svg><span class="fed-node-name" :style="{ color: s.color }">{{ s.name }}</span></div><div class="fed-node-omop">OMOP CDM · n={{ s.counts.reduce((a, b) => a + b, 0) }}</div><div class="fed-mini"><div class="fed-mini-bar" v-for="(c, i) in s.counts" :key="i" :style="{ height: ($clicks >= 2 ? c * MINI : 0) + 'px', background: s.color }"></div></div><div class="fed-run">computed locally</div></div></template>
-<div class="fed-tag" :class="{ show: $clicks >= 1 && $clicks < 3 }">1 script 4 all</div>
+<div class="fed-tag" :class="{ show: $clicks >= 4 }">1 script 4 all</div>
 <div class="fed-client"><div class="fed-monitor"><div class="fed-script"><span class="cm"># one script, every site</span><br><span class="fn">ds.glm</span>(t2d <span class="kw">~</span> age + sex)</div><div class="fed-bars"><template v-for="i in 6" :key="i"><div class="fed-col"><div class="fed-seg" v-for="s in sites" :key="s.name" :style="{ height: ($clicks >= 3 ? s.counts[i - 1] * SCALE : 0) + 'px', background: s.color }"></div></div></template></div><div class="fed-pooled-label" :class="{ show: $clicks >= 3 }">pooled result · n={{ total }}</div></div><div class="fed-client-label">Analyst <span class="role">· R / DataSHIELD client</span></div></div>
 </div>
 </div>
