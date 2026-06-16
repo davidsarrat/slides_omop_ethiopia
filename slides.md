@@ -12,6 +12,7 @@ codeCopy: false
 
 <script setup>
 import logoDswb from './assets/logo-dswb.png'
+import dsomopLogo from './assets/dsomop-logo.png'
 import davidPhoto from './assets/david-sarrat.jpg'
 import isglobal from './assets/logos/isglobal.png'
 import aphrc from './assets/logos/aphrc.png'
@@ -36,8 +37,9 @@ const row2 = [
 
 <div class="flex flex-col items-center justify-center h-full">
   <img :src="logoDswb" style="height: 80px; margin-bottom: 0.9em;" />
-  <div style="font-family: 'Roboto Mono', monospace; font-weight: 700; font-size: 3.2em; color: #0A1119;">
-    dsOMOP&nbsp;Workshop
+  <div class="flex items-center justify-center" style="font-family: 'Roboto Mono', monospace; font-weight: 700; font-size: 3.2em; color: #0A1119; gap: 0.28em;">
+    <img :src="dsomopLogo" style="height: 1.3em;" />
+    <span>dsOMOP&nbsp;Workshop</span>
   </div>
   <div class="flex flex-col items-center gap-1" style="margin-top: 1em;">
     <img :src="davidPhoto" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(0,0,0,0.15);" />
@@ -56,19 +58,27 @@ const row2 = [
 </div>
 
 ---
-src: ./slides/section.md
+src: ./slides/cdm-section.md
 ---
 
 ---
-src: ./slides/bullets.md
+src: ./slides/hospitals-datashield.md
 ---
 
 ---
-src: ./slides/table.md
+src: ./slides/advantages-interop.md
 ---
 
 ---
-src: ./slides/code.md
+src: ./slides/advantages-tools.md
+---
+
+---
+src: ./slides/omop-section.md
+---
+
+---
+src: ./slides/omop-perks.md
 ---
 
 ---

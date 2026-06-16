@@ -22,13 +22,11 @@ const row2 = [
 </script>
 
 <div class="flex flex-col items-center justify-center h-full">
-  <a href="https://dswb.africa" target="_blank" rel="noopener">
-    <img :src="logoDswb" style="height: 60px; margin-bottom: 0.7em;" />
-  </a>
-  <div style="font-family: 'Roboto Mono', monospace; font-weight: 700; font-size: 2.4em; color: #0A1119;">
-    Thank you
+  <img :src="logoDswb" style="height: 60px; margin-bottom: 0.7em;" />
+  <div style="font-family: 'Noto Sans Ethiopic', sans-serif; font-weight: 700; font-size: 2.6em; color: #0A1119;">
+    በጣም አመሰግናለሁ
   </div>
-  <div style="font-size: 1.05em; color: #0A1119; margin-top: 0.3em;">
+  <div style="font-size: 1.05em; color: #0A1119; margin-top: 0.4em;">
     Questions &amp; hands-on session
   </div>
   <a href="mailto:david.sarrat@isglobal.org" style="font-family: 'Roboto Mono', monospace; font-size: 0.85em; color: #0A1119 !important; margin-top: 0.5em; text-decoration: none;">

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;600;700&family=Noto+Sans+Ethiopic:wght@400;600;700&display=swap');
 
 /* ————————————————————————————————
    Transparent slide layers
@@ -144,6 +144,179 @@ td {
    Utility
    ———————————————————————————————— */
 
+/* ————————————————————————————————
+   OMOP CDM perks (green glass cards)
+   ———————————————————————————————— */
+
+.omop-name {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.08em;
+  line-height: 1.45;
+  color: #c8d8cc;
+  text-align: center;
+  max-width: 30em;
+}
+.omop-name b { color: #00B04F; font-weight: 700; }
+.omop-acr {
+  font-family: 'Roboto Mono', monospace;
+  color: #00B04F;
+  font-weight: 700;
+}
+
+.perk-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  width: 100%;
+  max-width: 740px;
+}
+.perk-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(0, 176, 79, 0.12);
+  border: 1px solid rgba(0, 176, 79, 0.42);
+  border-radius: 14px;
+  padding: 12px 18px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.34, 1.4, 0.6, 1);
+}
+.perk-card:not(.slidev-vclick-hidden) { opacity: 1; transform: translateY(0); }
+.perk-card.span2 { grid-column: 1 / -1; }
+.perk-check {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #00B04F;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95em;
+  flex: none;
+  box-shadow: 0 0 12px rgba(0, 176, 79, 0.5);
+}
+.perk-text { font-family: 'Roboto Mono', monospace; font-size: 1.02em; color: #f0e8e0; font-weight: 500; }
+.perk-sub { font-family: 'Roboto Mono', monospace; font-size: 0.8em; color: #5fd99a; margin-top: 3px; }
+
+.join-msg {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #7df0ff;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.6s ease 0.35s, transform 0.6s ease 0.35s;
+}
+.join-msg.show { opacity: 1; transform: translateY(0); }
+
+.adv-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(63, 227, 255, 0.14);
+  border: 1px solid rgba(63, 227, 255, 0.5);
+  color: #5cebff;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  flex: none;
+}
+
+/* ————————————————————————————————
+   Plug-and-play: a dashboard screen that powers on (single SVG)
+   ———————————————————————————————— */
+
+.pp-scene { position: relative; width: 100%; }
+.pp-svg { width: 100%; height: auto; display: block; }
+.pp-dblabel, .pp-stat, .pp-kpi, .pp-kpinum, .pp-ttl { font-family: 'Roboto Mono', monospace; }
+.pp-dblabel { fill: #5cebff; font-size: 15.5px; }
+
+/* plug + port */
+.pp-plug { transition: transform 0.55s cubic-bezier(0.5, 0, 0.2, 1); }
+.pp-scene.connected .pp-plug { transform: translateX(30px); }
+.pp-hole { fill: #2a4358; transition: fill 0.4s ease; }
+.pp-scene.connected .pp-hole { fill: #7df0ff; }
+
+/* monitor */
+.pp-bezel { fill: #0c2036; stroke: rgba(63, 227, 255, 0.22); stroke-width: 2.5; transition: stroke 0.5s ease; }
+.pp-scene.connected .pp-bezel { stroke: rgba(63, 227, 255, 0.55); }
+.pp-stand { fill: #0c2036; }
+.pp-screen { fill: #07111c; transition: fill 0.5s ease; }
+.pp-scene.connected .pp-screen { fill: #0a2236; }
+.pp-power { fill: #3b5570; transition: fill 0.4s ease; }
+.pp-scene.connected .pp-power { fill: #38e08a; }
+
+/* power-on flash */
+.pp-flash { opacity: 0; }
+.pp-scene.connected .pp-flash { animation: ppFlash 0.6s ease-out 0.28s; }
+@keyframes ppFlash { 0% { opacity: 0; } 30% { opacity: 0.5; } 100% { opacity: 0; } }
+
+/* dashboard pieces */
+.pp-dash { opacity: 0; transition: opacity 0.45s ease; }
+.pp-scene.connected .pp-dash { opacity: 1; }
+.pp-bar {
+  transform: scaleY(0);
+  transform-box: fill-box;
+  transform-origin: bottom;
+  transition: transform 0.55s cubic-bezier(0.34, 1.45, 0.6, 1);
+}
+.pp-scene.connected .pp-bar { transform: scaleY(1); }
+.pp-line {
+  stroke: #5cebff;
+  stroke-width: 2.4;
+  fill: none;
+  stroke-dasharray: 260;
+  stroke-dashoffset: 260;
+  transition: stroke-dashoffset 0.85s ease 0.2s;
+}
+.pp-scene.connected .pp-line { stroke-dashoffset: 0; }
+.pp-area { fill: rgba(63, 227, 255, 0.16); opacity: 0; transition: opacity 0.5s ease 0.45s; }
+.pp-scene.connected .pp-area { opacity: 1; }
+.pp-donut-bg { stroke: rgba(255, 255, 255, 0.08); stroke-width: 9; fill: none; }
+.pp-donut {
+  stroke: #3fe3ff;
+  stroke-width: 9;
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 0 400;
+  opacity: 0;
+  transform: rotate(-90deg);
+  transform-origin: 862px 176px;
+  transition: opacity 0.35s ease 0.62s, stroke-dasharray 0.8s ease 0.62s;
+}
+.pp-scene.connected .pp-donut { opacity: 1; stroke-dasharray: 128 400; }
+.pp-grid-l { stroke: rgba(255, 255, 255, 0.08); stroke-width: 1; }
+.pp-kpi { fill: #8fb6cf; font-size: 10.5px; }
+.pp-kpinum { fill: #eaf6ff; font-size: 18px; font-weight: 700; }
+.pp-ttl { fill: #6fdfff; font-size: 11px; }
+
+/* electricity spark at the junction */
+.pp-spark { opacity: 0; transform-origin: 378px 167px; }
+.pp-scene.connected .pp-spark { animation: ppSpark 0.5s ease-out 0.2s; }
+@keyframes ppSpark {
+  0% { opacity: 0; transform: scale(0.3); }
+  35% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 0; transform: scale(1.7); }
+}
+.pp-spark line { stroke: #c9f6ff; stroke-width: 2.2; stroke-linecap: round; }
+.pp-spark circle { fill: #ffffff; }
+
+/* status */
+.pp-stat { font-size: 17px; }
+.pp-stat-pre { fill: #9fb4c4; opacity: 1; transition: opacity 0.4s ease; }
+.pp-stat-on { fill: #3bf07e; font-size: 22px; font-weight: 700; opacity: 0; transition: opacity 0.4s ease 0.6s; }
+.pp-scene.connected .pp-stat-pre { opacity: 0; }
+.pp-scene.connected .pp-stat-on { opacity: 1; }
+
 .accent-green { color: #00B04F; }
 .accent-amber { color: #FEAE00; }
 .accent-orange { color: #FF6900; }
@@ -166,6 +339,311 @@ td {
   gap: 14px;
   max-width: 700px;
 }
+
+/* ————————————————————————————————
+   Hospitals & animated speech bubbles
+   ———————————————————————————————— */
+
+.hospital-label {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.85em;
+  letter-spacing: 0.04em;
+  color: #f0e8e0;
+  margin-top: 0.2em;
+}
+
+.speech-bubble {
+  position: absolute;
+  background: #ffffff;
+  color: #0A1119;
+  border-radius: 18px;
+  padding: 15px 24px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.25em;
+  line-height: 1.4;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+  max-width: 380px;
+  text-align: center;
+  /* pop-in animation driven by v-click */
+  opacity: 0;
+  transform: translateX(-50%) scale(0.5) translateY(8px);
+  transform-origin: bottom center;
+  transition: opacity 0.3s ease, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.speech-bubble.slidev-vclick-target:not(.slidev-vclick-hidden),
+.speech-bubble.show {
+  opacity: 1;
+  transform: translateX(-50%) scale(1) translateY(0);
+}
+
+.bubble-a { left: 30%; top: 11%; }
+.bubble-b { left: 70%; top: 15%; }
+
+/* Reaction bubbles sit to the RIGHT of each hospital (hospitals don't move) */
+.speech-bubble.bubble-ohno,
+.speech-bubble.bubble-cdm {
+  left: 26%;
+  max-width: 300px;
+  z-index: 20;
+  transform-origin: left center;
+  transform: translateY(-50%) scale(0.5);
+}
+.bubble-ohno { top: 24%; }
+.bubble-cdm { top: 76%; }
+.speech-bubble.bubble-ohno.is-on,
+.speech-bubble.bubble-cdm.is-on {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+.speech-bubble strong {
+  color: #E8590C !important;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -11px;
+  width: 0;
+  height: 0;
+  border-left: 13px solid transparent;
+  border-right: 13px solid transparent;
+  border-top: 13px solid #ffffff;
+}
+
+.speech-bubble.tail-left::after { left: 38px; }
+.speech-bubble.tail-right::after { right: 38px; }
+.speech-bubble.tail-center::after { left: 50%; transform: translateX(-50%); }
+.speech-bubble.tail-side::after {
+  left: -11px;
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+  border: 11px solid transparent;
+  border-right: 12px solid #ffffff;
+  border-left: 0;
+}
+
+/* ————————————————————————————————
+   CDM discrepancy scene (hospitals slide left, tables appear)
+   ———————————————————————————————— */
+
+.cdm-scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.cdm-unit {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  transition: left 0.7s cubic-bezier(0.5, 0, 0.2, 1),
+              top 0.7s cubic-bezier(0.5, 0, 0.2, 1),
+              transform 0.7s cubic-bezier(0.5, 0, 0.2, 1);
+}
+
+.cdm-unit.unit-a { left: 30%; top: 60%; transform: translate(-50%, -50%); }
+.cdm-unit.unit-b { left: 70%; top: 60%; transform: translate(-50%, -50%); }
+
+.cdm-scene.split .unit-a { left: 15%; top: 24%; transform: translate(-50%, -50%) scale(0.92); }
+.cdm-scene.split .unit-b { left: 15%; top: 76%; transform: translate(-50%, -50%) scale(0.92); }
+
+.cdm-scene.split .bubble-a,
+.cdm-scene.split .bubble-b {
+  opacity: 0 !important;
+  transform: translateX(-50%) scale(0.6) translateY(8px);
+}
+
+.cdm-table {
+  position: absolute;
+  left: 33%;
+  width: 62%;
+  opacity: 0;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-size: 0.82em;
+  transition: opacity 0.55s ease 0.4s, transform 0.55s ease 0.4s,
+              top 0.6s cubic-bezier(0.5, 0, 0.2, 1),
+              border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.cdm-table.table-a { top: 24%; transform: translateY(-50%) translateX(28px); }
+.cdm-table.table-b { top: 76%; transform: translateY(-50%) translateX(28px); }
+
+.cdm-scene.split .table-a { opacity: 1; transform: translateY(-50%) translateX(0); }
+.cdm-scene.split .table-b { opacity: 1; transform: translateY(-50%) translateX(0); }
+
+/* Collision: tables converge to the centre, clash in red, then bounce apart */
+.cdm-scene.collide .table-a,
+.cdm-scene.collide .table-b {
+  border-color: #ED1C24;
+  box-shadow: 0 0 30px rgba(237, 28, 36, 0.55);
+  background: rgba(237, 28, 36, 0.08);
+}
+.cdm-scene.collide .table-a { animation: clashDown 0.7s cubic-bezier(0.45, 0, 0.25, 1) forwards; }
+.cdm-scene.collide .table-b { animation: clashUp 0.7s cubic-bezier(0.45, 0, 0.25, 1) forwards; }
+
+@keyframes clashDown {
+  0%   { transform: translateY(-50%) translateX(0); }
+  52%  { transform: translateY(calc(-50% + 104px)) translateX(0); }
+  76%  { transform: translateY(calc(-50% + 78px)) translateX(0); }
+  100% { transform: translateY(calc(-50% + 90px)) translateX(0); }
+}
+
+@keyframes clashUp {
+  0%   { transform: translateY(-50%) translateX(0); }
+  52%  { transform: translateY(calc(-50% - 104px)) translateX(0); }
+  76%  { transform: translateY(calc(-50% - 78px)) translateX(0); }
+  100% { transform: translateY(calc(-50% - 90px)) translateX(0); }
+}
+
+.cdm-clash {
+  position: absolute;
+  left: 64%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.6);
+  opacity: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: #ED1C24;
+  color: #ffffff;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 600;
+  font-size: 1.05em;
+  letter-spacing: 0.02em;
+  padding: 11px 22px;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 10px 34px rgba(237, 28, 36, 0.5);
+  transition: opacity 0.4s ease 0.35s, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.35s;
+}
+
+.cdm-scene.collide .cdm-clash { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
+/* Reaction: hospitals stay put, incompatible tables remain (dimmed), and the
+   hospitals react with bubbles to their right */
+.cdm-scene.react .table-a,
+.cdm-scene.react .table-b { opacity: 0.5; }
+
+.cdm-table table { margin: 0; }
+.cdm-table th { padding: 0.4em 0.7em; }
+.cdm-table td { padding: 0.38em 0.7em; }
+.cdm-unit-tag {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.9em;
+  color: #FEAE00;
+  margin-bottom: 5px;
+}
+
+.cdm-diff { color: #FF6900; font-weight: 600; }
+.cdm-ok { color: #00B04F; font-weight: 600; }
+
+/* ————————————————————————————————
+   CDM solution phases: rules cards → converted tables → green rbind
+   ———————————————————————————————— */
+
+/* On the rules phase, clear the incompatible tables, clash badge & reaction */
+.cdm-scene.rules .table-a,
+.cdm-scene.rules .table-b { opacity: 0 !important; transition: opacity 0.3s ease !important; }
+.cdm-scene.rules .cdm-clash { opacity: 0 !important; transition: opacity 0.3s ease !important; transform: translate(-50%, -50%) scale(0.85); }
+.cdm-scene.rules .bubble-ohno,
+.cdm-scene.rules .bubble-cdm { opacity: 0 !important; transition: opacity 0.3s ease !important; }
+
+/* "We'll set the following rules" + one card per variable */
+.rules-stage {
+  position: absolute;
+  left: 33%;
+  width: 63%;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.45s ease 0.4s;
+}
+.cdm-scene.rules .rules-stage { opacity: 1; }
+.cdm-scene.converted .rules-stage { opacity: 0; transition: opacity 0.3s ease; }
+
+.rules-head {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.05em;
+  color: #FEAE00;
+  margin-bottom: 0.9em;
+}
+.rules-grid { display: flex; flex-wrap: wrap; gap: 14px; }
+.rule-card {
+  flex: 1 1 calc(50% - 14px);
+  min-width: 220px;
+  background: rgba(0, 176, 79, 0.06);
+  border: 1px solid rgba(0, 176, 79, 0.3);
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+.rule-var {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 600;
+  font-size: 0.95em;
+  color: #00B04F;
+}
+.rule-desc { color: #d8d2ca; font-size: 0.85em; margin-top: 3px; }
+
+/* Converted (harmonised) tables reuse .cdm-table card styling */
+.cdm-table.harm-a { top: 24%; transform: translateY(-50%) translateX(26px); }
+.cdm-table.harm-b { top: 76%; transform: translateY(-50%) translateX(26px); }
+.cdm-scene.converted .harm-a,
+.cdm-scene.converted .harm-b { opacity: 1; transform: translateY(-50%) translateX(0); }
+.cdm-scene.merged .harm-a { opacity: 0; top: 55%; }
+.cdm-scene.merged .harm-b { opacity: 0; top: 55%; }
+
+/* Combined green dataset — same size/font as the pre-merge tables */
+.cdm-table.merged-table {
+  top: 55%;
+  transform: translateY(-50%);
+  border-color: #00B04F;
+  box-shadow: 0 0 34px rgba(0, 176, 79, 0.5);
+  background: rgba(0, 176, 79, 0.08);
+}
+.merged-table .cdm-unit-tag { color: #00B04F; }
+.cdm-scene.merged .merged-table { opacity: 1; }
+
+/* Success side bubbles to the right of each hospital */
+.speech-bubble.bubble-collab,
+.speech-bubble.bubble-yay {
+  left: 26%;
+  max-width: 300px;
+  z-index: 20;
+  transform-origin: left center;
+  transform: translateY(-50%) scale(0.5);
+}
+.bubble-collab { top: 24%; }
+.bubble-yay { top: 76%; }
+.speech-bubble.bubble-collab.is-on,
+.speech-bubble.bubble-yay.is-on {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+/* Closing tagline */
+.cdm-tagline {
+  position: absolute;
+  left: 64%;
+  top: 89%;
+  width: 62%;
+  transform: translateX(-50%) translateY(10px);
+  opacity: 0;
+  text-align: center;
+  font-size: 1em;
+  color: #f0e8e0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.cdm-tagline.is-on { opacity: 1; transform: translateX(-50%) translateY(0); }
 
 .logo-badge {
   background: #ffffff;
