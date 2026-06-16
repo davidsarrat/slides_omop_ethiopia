@@ -1205,6 +1205,6 @@ ul li::marker { color: #00B04F; }
 .cellsub-enter-active { transition: opacity 0.35s ease; }
 .cellsub-leave-active { transition: opacity 0.16s ease; }
 .cellsub-enter-from, .cellsub-leave-to { opacity: 0; }
-.sx-dc.drop { background: rgba(210, 60, 60, 0.06); }
+.sx-dc.drop { background: rgba(210, 60, 60, 0.06); width: 154px; }
 .sx-strk { text-decoration: line-through; color: #c08a8a; }
 .sx-droptag { color: #d6453b; font-weight: 700; font-size: 0.82em; margin-left: 4px; }
