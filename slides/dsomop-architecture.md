@@ -4,19 +4,52 @@ clicks: 2
 <script setup>
 const subs = [
   'An analyst, a DataSHIELD server, and an OMOP CDM database.',
-  '<strong>Plug &amp; play</strong> : dsOMOP connects with a resource — engine, url, user, password.',
-  '<strong>dsOMOPClient</strong> orchestrates the request; <strong>dsOMOP</strong> runs the retrieval on the database.',
+  '<strong>Plug &amp; play</strong> : dsOMOP connects the server to the database with a resource.',
+  '<strong>dsOMOPClient</strong> orchestrates; <strong>dsOMOP</strong> executes the retrieval on the database.',
 ]
 </script>
 <div class="flex flex-col h-full" style="gap: 0.4rem;">
 <h2 style="font-size: 1.08em; text-align: center;">Plug-and-play access to OMOP data</h2>
 <div class="arch-sub"><transition name="regfade" mode="out-in"><span :key="Math.min($clicks, 2)" v-html="subs[Math.min($clicks, 2)]"></span></transition></div>
-<div class="arch-stage">
-<div class="arch-node"><svg width="42" height="34" viewBox="0 0 42 34"><circle cx="21" cy="11" r="7" fill="#5cebff" /><path d="M8 33 C8 23 34 23 34 33 Z" fill="#5cebff" /></svg><div class="arch-node-name">Analyst</div><div class="arch-badge client">dsOMOPClient</div></div>
-<div class="arch-conn"><svg viewBox="0 0 120 80" width="120" height="80"><text class="arch-lbl" x="60" y="13" text-anchor="middle">orchestrate</text><line class="arch-arrow-line" :class="{ flow: $clicks >= 2 }" x1="6" y1="30" x2="106" y2="30" /><polygon class="arch-head" :class="{ 'flow-r': $clicks >= 2 }" points="106,25 116,30 106,35" /><line class="arch-arrow-line back" :class="{ flow: $clicks >= 2 }" x1="114" y1="52" x2="14" y2="52" /><polygon class="arch-head" :class="{ 'flow-l': $clicks >= 2 }" points="14,47 4,52 14,57" /><text class="arch-lbl" x="60" y="73" text-anchor="middle">data</text></svg></div>
-<div class="arch-node"><svg width="38" height="36" viewBox="0 0 38 36"><rect x="4" y="3" width="30" height="9" rx="2" fill="none" stroke="#7fd6a3" stroke-width="1.6" /><circle cx="9" cy="7.5" r="1.5" fill="#7fd6a3" /><rect x="4" y="14" width="30" height="9" rx="2" fill="none" stroke="#7fd6a3" stroke-width="1.6" /><circle cx="9" cy="18.5" r="1.5" fill="#7fd6a3" /><rect x="4" y="25" width="30" height="9" rx="2" fill="none" stroke="#7fd6a3" stroke-width="1.6" /><circle cx="9" cy="29.5" r="1.5" fill="#7fd6a3" /></svg><div class="arch-node-name">DataSHIELD<br>server</div><div class="arch-badge server">dsOMOP</div></div>
-<div class="arch-conn arch-conn-sd" :class="{ connected: $clicks >= 1 }"><svg viewBox="0 0 120 80" width="120" height="80"><path class="arch-cable" d="M4,40 H64" /><g class="arch-plug"><rect x="64" y="33" width="18" height="14" rx="3" /><rect x="82" y="36" width="7" height="2.6" rx="1.3" /><rect x="82" y="41.4" width="7" height="2.6" rx="1.3" /></g><path class="arch-socket" d="M97,31 V49 M97,40 H116" /><g class="arch-spark" stroke="#00D964" stroke-width="1.5" stroke-linecap="round"><line x1="91" y1="40" x2="96" y2="33" /><line x1="91" y1="40" x2="96" y2="47" /></g><text class="arch-lbl" x="60" y="73" text-anchor="middle">plug &amp; play</text></svg></div>
-<div class="arch-node"><svg width="34" height="38" viewBox="0 0 34 38"><ellipse cx="17" cy="7" rx="14" ry="5.5" fill="none" stroke="#6cb0e0" stroke-width="1.8" /><path d="M3 7 V31 C3 34.5 31 34.5 31 31 V7" fill="none" stroke="#6cb0e0" stroke-width="1.8" /><path d="M3 16 C3 19 31 19 31 16" stroke="#6cb0e0" stroke-width="1.1" opacity="0.5" fill="none" /><path d="M3 23.5 C3 26.5 31 26.5 31 23.5" stroke="#6cb0e0" stroke-width="1.1" opacity="0.5" fill="none" /></svg><div class="arch-node-name">OMOP CDM</div><div class="arch-node-sub">PostgreSQL</div></div>
-<div class="arch-resource" :class="{ show: $clicks >= 1 }"><div class="arch-res-title">resource</div><div class="arch-res-row"><span class="k">engine</span><span class="v">postgresql</span></div><div class="arch-res-row"><span class="k">url</span><span class="v">…:5432/omop_cdm</span></div><div class="arch-res-row"><span class="k">user</span><span class="v">researcher</span></div><div class="arch-res-row"><span class="k">password</span><span class="v">••••••••</span></div></div>
+<div class="arch2-stage">
+<svg class="arch2-svg" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="dbtop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a6f94" /><stop offset="1" stop-color="#2a5170" /></linearGradient>
+<linearGradient id="dbbody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f5e80" /><stop offset="1" stop-color="#1c3c57" /></linearGradient>
+</defs>
+<rect x="20" y="112" width="152" height="130" rx="14" fill="rgba(92,235,255,0.08)" stroke="rgba(92,235,255,0.42)" stroke-width="1.2" />
+<text x="96" y="136" text-anchor="middle" fill="#5cebff" class="a2-title">Analyst</text>
+<circle cx="96" cy="166" r="12" fill="#5cebff" /><path d="M75 202 C75 182 117 182 117 202 Z" fill="#5cebff" />
+<rect x="34" y="212" width="124" height="20" rx="10" fill="rgba(92,235,255,0.12)" stroke="rgba(92,235,255,0.45)" stroke-width="1" /><text x="96" y="226" text-anchor="middle" fill="#aef0ff" class="a2-badge">dsOMOPClient</text>
+<rect x="300" y="58" width="256" height="244" rx="16" fill="rgba(0,176,79,0.07)" stroke="rgba(0,176,79,0.4)" stroke-width="1.2" />
+<text x="428" y="83" text-anchor="middle" fill="#7fd6a3" class="a2-title">DataSHIELD server</text>
+<rect x="322" y="102" width="212" height="70" rx="11" fill="rgba(0,176,79,0.16)" stroke="rgba(127,214,163,0.6)" stroke-width="1" />
+<text x="428" y="132" text-anchor="middle" fill="#aef0c8" class="a2-pkg">dsOMOP</text>
+<text x="428" y="151" text-anchor="middle" fill="#9fb4c4" class="a2-sub">executes the data retrieval</text>
+<text x="428" y="206" text-anchor="middle" fill="#b0b8c0" class="a2-sub">reads OMOP tables on demand</text>
+<rect x="322" y="250" width="212" height="40" rx="9" fill="rgba(255,179,102,0.08)" stroke="rgba(255,179,102,0.22)" stroke-width="1" />
+<text x="428" y="269" text-anchor="middle" fill="#ffb366" class="a2-pat">Patient data</text>
+<text x="428" y="283" text-anchor="middle" fill="#b0b8c0" class="a2-small">never leaves the server</text>
+<ellipse cx="672" cy="126" rx="46" ry="14" fill="url(#dbtop)" stroke="#6cb0e0" stroke-width="1.8" />
+<path d="M626 126 V212 a46 14 0 0 0 92 0 V126" fill="url(#dbbody)" stroke="#6cb0e0" stroke-width="1.8" />
+<path d="M626 152 a46 14 0 0 0 92 0" fill="none" stroke="#6cb0e0" stroke-width="1.1" opacity="0.45" /><path d="M626 178 a46 14 0 0 0 92 0" fill="none" stroke="#6cb0e0" stroke-width="1.1" opacity="0.45" />
+<text x="672" y="240" text-anchor="middle" fill="#8fc4ea" class="a2-db">OMOP CDM</text>
+<text x="672" y="254" text-anchor="middle" fill="#9fb4c4" class="a2-sub">PostgreSQL</text>
+<g class="arch2-reveal" :class="{ on: $clicks >= 1 }">
+<path d="M556 138 H600" stroke="#00D964" stroke-width="3" fill="none" />
+<rect x="600" y="130" width="18" height="16" rx="4" fill="#00D964" /><rect x="618" y="133" width="8" height="3" rx="1.5" fill="#cdeedd" /><rect x="618" y="139" width="8" height="3" rx="1.5" fill="#cdeedd" />
+<g stroke="#00D964" stroke-width="1.4" stroke-linecap="round" opacity="0.9"><line x1="630" y1="138" x2="636" y2="131" /><line x1="630" y1="138" x2="636" y2="145" /></g>
+<text x="595" y="166" text-anchor="middle" fill="#5fe0a0" class="a2-plug">plug &amp; play</text>
+</g>
+<g class="arch2-reveal" :class="{ on: $clicks >= 2 }">
+<text x="236" y="126" text-anchor="middle" fill="#5cebff" class="a2-sub">request · orchestrate</text>
+<path d="M176 150 C220 138 260 134 296 140" stroke="#5cebff" stroke-width="2.5" fill="none" stroke-dasharray="7 5"><animate attributeName="stroke-dashoffset" from="0" to="-12" dur="0.8s" repeatCount="indefinite" /></path>
+<polygon points="291,135 302,140 291,145" fill="#5cebff" />
+<path d="M296 206 C260 213 220 217 178 206" stroke="#66ddaa" stroke-width="2.5" fill="none" stroke-dasharray="7 5"><animate attributeName="stroke-dashoffset" from="0" to="-12" dur="0.8s" repeatCount="indefinite" /></path>
+<polygon points="183,201 172,206 183,211" fill="#66ddaa" />
+<text x="236" y="226" text-anchor="middle" fill="#66ddaa" class="a2-sub">aggregated data</text>
+</g>
+</svg>
+<div class="arch-resource" :class="{ show: $clicks >= 1 }" style="left: 80%; bottom: 2%;"><div class="arch-res-title">resource</div><div class="arch-res-row"><span class="k">engine</span><span class="v">postgresql</span></div><div class="arch-res-row"><span class="k">url</span><span class="v">…:5432/omop_cdm</span></div><div class="arch-res-row"><span class="k">user</span><span class="v">researcher</span></div><div class="arch-res-row"><span class="k">password</span><span class="v">••••••••</span></div></div>
 </div>
 </div>

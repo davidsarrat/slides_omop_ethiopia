@@ -1125,6 +1125,20 @@ ul li::marker { color: #00B04F; }
 .arch-res-row .k { color: #6f7d8c; }
 .arch-res-row .v { color: #e6dccb; }
 
+.arch2-stage { flex: 1; min-height: 0; position: relative; display: flex; align-items: center; justify-content: center; }
+.arch2-svg { width: 100%; max-height: 100%; }
+.arch2-reveal { opacity: 0; transition: opacity 0.55s ease; }
+.arch2-reveal.on { opacity: 1; }
+.arch2-svg text { font-family: 'Roboto Mono', monospace; }
+.a2-title { font-size: 13px; font-weight: 600; }
+.a2-pkg { font-size: 14px; font-weight: 700; }
+.a2-db { font-size: 12px; font-weight: 600; }
+.a2-pat { font-size: 10px; font-weight: 600; }
+.a2-badge { font-size: 9px; font-weight: 600; }
+.a2-plug { font-size: 9px; font-weight: 600; }
+.a2-sub { font-size: 8.5px; }
+.a2-small { font-size: 8px; }
+
 /* ————————————————————————————————
    dsOMOP simplification (catalog -> tables -> dataset)
    ———————————————————————————————— */
