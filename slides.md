@@ -1,6 +1,7 @@
 ---
 theme: default
 title: dsOMOP Workshop
+routerMode: hash
 class: text-center
 drawings:
   persist: false
