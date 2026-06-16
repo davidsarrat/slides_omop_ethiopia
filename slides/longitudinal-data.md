@@ -1,13 +1,15 @@
 ---
-clicks: 3
+clicks: 4
 ---
 <script setup>
 const pidColor = '#2F80ED'
 const conceptColor = '#00B04F'
 const rows = [
-  { step: 1, pid: '1234', cid: '4099154', cname: 'Body weight', value: '82 kg', date: '2021-06-10', dateColor: '#FEAE00' },
-  { step: 2, pid: '1234', cid: '4099154', cname: 'Body weight', value: '79 kg', date: '2022-06-14', dateColor: '#FF6900' },
-  { step: 3, pid: '1234', cid: '4099154', cname: 'Body weight', value: '77 kg', date: '2023-06-09', dateColor: '#ED1C24' },
+  { step: 0, pid: '1234', cid: '4099154', cname: 'Body weight', value: '88 kg', date: '2019-05-12', dateColor: '#FEAE00' },
+  { step: 1, pid: '1234', cid: '4099154', cname: 'Body weight', value: '85 kg', date: '2020-06-03', dateColor: '#FF6900' },
+  { step: 2, pid: '1234', cid: '4099154', cname: 'Body weight', value: '83 kg', date: '2021-06-10', dateColor: '#ED1C24' },
+  { step: 3, pid: '1234', cid: '4099154', cname: 'Body weight', value: '80 kg', date: '2022-06-14', dateColor: '#E5439B' },
+  { step: 4, pid: '1234', cid: '4099154', cname: 'Body weight', value: '77 kg', date: '2023-06-09', dateColor: '#8B5CF6' },
 ]
 </script>
 <div class="flex flex-col h-full" style="gap: 0.45rem;">
@@ -19,5 +21,5 @@ const rows = [
 <div class="reg-table"><div class="reg-tname">MEASUREMENT</div><div class="reg-head"><div class="reg-c c-pid">person_id</div><div class="reg-c c-cid">measurement_concept_id</div><div class="reg-c c-val">value_as_number</div><div class="reg-c c-date">measurement_date</div></div><template v-for="r in rows" :key="r.date"><div class="reg-row" v-if="$clicks >= r.step"><div class="reg-c c-pid"><span class="reg-pidv reg-hl" :style="{ color: pidColor, background: pidColor + '22' }">{{ r.pid }}</span></div><div class="reg-c c-cid"><span class="reg-cid reg-hl" :style="{ color: conceptColor, background: conceptColor + '22' }">{{ r.cid }}</span><span class="reg-cname">{{ r.cname }}</span></div><div class="reg-c c-val"><span>{{ r.value }}</span></div><div class="reg-c c-date"><span class="reg-datev reg-hl" :style="{ color: r.dateColor, background: r.dateColor + '22' }">{{ r.date }}</span></div></div></template></div>
 </div>
 </div>
-<div class="reg-caption" v-if="$clicks >= 3">Same <strong style="color: #2F80ED;">person_id</strong>, same <strong style="color: #00B04F;">concept_id</strong>, different <strong style="color: #FF6900;">dates</strong> : a full clinical history.</div>
+<div class="reg-caption" v-if="$clicks >= 4">Same <strong style="color: #2F80ED;">person_id</strong>, same <strong style="color: #00B04F;">concept_id</strong>, different <strong style="color: #FF6900;">dates</strong> : a full clinical history.</div>
 </div>
