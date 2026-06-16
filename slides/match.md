@@ -15,13 +15,14 @@ import dsomop from '../assets/dsomop-logo.png'
 </div>
 
 <style>
+.match-slide.slidev-layout { background: linear-gradient(135deg, #ff7854 0%, #fd5068 45%, #fd267d 100%) !important; color: #fff; }
+.match-slide.slidev-layout::after { opacity: 0; }
+
 .match-stage { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; overflow: hidden; }
 
 .match-title {
-  font-family: 'Kaushan Script', cursive; font-size: 5em; line-height: 1;
-  background: linear-gradient(120deg, #ff8a5b 0%, #fd5068 50%, #fd267d 100%);
-  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 4px 16px rgba(253, 80, 104, 0.4));
+  font-family: 'Kaushan Script', cursive; font-size: 5em; line-height: 1; color: #fff;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.25);
   animation: matchTitle 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
 }
 @keyframes matchTitle { from { opacity: 0; transform: translateY(-22px) scale(0.7) rotate(-3deg); } to { opacity: 1; transform: none; } }
