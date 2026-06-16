@@ -9,7 +9,7 @@ import ohdsi from '../assets/logos/ohdsi.png'
 <div class="ava ava-left"><img :src="datashield" alt="DataSHIELD" /></div>
 <div class="ava ava-right"><img :src="ohdsi" alt="OHDSI / OMOP CDM" /></div>
 </div>
-<div class="match-sub">Federated analysis from DataSHIELD, harmonised data from the OMOP CDM : one script runs everywhere, and patient data never moves.</div>
+<div class="match-sub">Federation from DataSHIELD, harmonization from OMOP CDM:<br />one script works everywhere, patient data never moves.</div>
 </div>
 
 <style>
