@@ -132,6 +132,22 @@ src: ./slides/dsomop-simplify.md
 ---
 
 ---
+src: ./slides/dsflower-section.md
+---
+
+---
+src: ./slides/federated-learning.md
+---
+
+---
+src: ./slides/dsflower-architecture.md
+---
+
+---
+src: ./slides/secure-aggregation.md
+---
+
+---
 src: ./slides/closing.md
 class: closing-slide
 ---
